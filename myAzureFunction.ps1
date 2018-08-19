@@ -1,11 +1,12 @@
-﻿
+﻿cd C:\repos\powershell-azure\
+$configFile = Import-LocalizedData -FileName config.psd1
 
 
 Function myAzureFunction
 {
     Param( 
-        [String] $tenantId          = "",
-        [String] $subscriptionId    = "",
+        [String] $tenantId          = $configFile.TenantId,
+        [String] $subscriptionId    = $configFile.SubscriptionId,
         [ValidateSet("login","startup","teardown")][String] $action 
         )
 
